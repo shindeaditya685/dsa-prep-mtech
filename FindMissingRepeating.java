@@ -12,11 +12,10 @@ class Codechef
         int repeating = 0;
         
         for (int num : nums) {
-            set.add(num);
-            if (set.contains(num)) {
-                repeating = num;
-            }
-        }
+        	if (!set.add(num)) {
+            	repeating = num;
+        	}
+    	}
         
         int missing = 0;
         
@@ -44,11 +43,10 @@ class Codechef
         
         
         for (int num : nums) {
-            set.add(num);
-            if (set.contains(num)) {
-                repeating = num;
-            }
-        }
+        	if (!set.add(num)) {
+            	repeating = num;
+        	}
+    	}
         
         int sum = 0;
         int n = set.size() + 1;
