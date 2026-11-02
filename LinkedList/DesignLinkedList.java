@@ -49,6 +49,24 @@ class LinkedList
     }
     
     
+    static int getIndexOfElement(int key) {
+        if (size == 0) {
+            return -1;
+        }
+        
+        Node temp = head;
+        
+        for (int i = 0; i < size; i++) {
+            if (temp.data == key) {
+                return i;
+            }
+            temp = temp.next;
+        }
+        
+        return -1;
+    }
+    
+    
     static void addAtIndeX(int value, int index) {
         if (index < 0 || index > size) {
             System.out.println("Invalid index!!!");
@@ -94,6 +112,58 @@ class LinkedList
         System.out.println("->null");
     }
     
+    static void removeFirst() {
+        if (size == 0) {
+            System.out.println("Can not delete. Empty Linked List.");
+            return;
+        }
+        
+        if (size == 1) {
+            head = tail = null;
+            size--;
+            return;
+        }
+        
+        head = head.next;
+        size--;
+    }
+    
+    static void removeLast() {
+        if (size == 0) {
+            System.out.println("Can not delete. Empty Linked List.");
+            return;
+        }
+        
+        if (size == 1) {
+            head = tail = null;
+            size--;
+            return;
+        }
+        
+        Node temp = head;
+        
+        for (int i = 0; i < size - 2; i++) {
+            temp = temp.next;
+        }
+        
+        tail = temp;
+        tail.next = null;
+        size--;
+    }
+    
+    static void removeFromIndex(int index) {
+        if (size == 0) {
+            System.out.println("Can not delete. Linked list is Empty");
+            return;
+        }
+        Node temp = head;
+        for (int i = 0; i < index - 1; i++) {
+            temp = temp.next;
+        }
+        
+        temp.next = temp.next.next;
+    }
+    
     
     
     
@@ -110,9 +180,21 @@ class LinkedList
         ll.addFirst(1);
         
         
+        
         System.out.println(head.next.data);
         System.out.println(tail.data);
         System.out.println(size);
+        print(head);
+        ll.removeFirst();
+        print(head);
+        
+        ll.removeLast();
+        print(head);
+        
+        int index = getIndexOfElement(40);
+        System.out.println(index);
+        
+        ll.removeFromIndex(0);
         print(head);
 
 	}
